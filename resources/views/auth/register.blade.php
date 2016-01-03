@@ -38,6 +38,17 @@
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            <label class="col-md-4 control-label">User Type</label>
+
+                            <div class="col-md-6">
+                                <select class="form-control" name="user_type">
+                                    <option value="admin">Admin</option>
+                                    <option value="user" selected>Normal User</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label class="col-md-4 control-label">Password</label>
 
