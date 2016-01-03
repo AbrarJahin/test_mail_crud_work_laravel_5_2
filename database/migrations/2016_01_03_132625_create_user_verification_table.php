@@ -30,8 +30,9 @@ class CreateUserVerificationTable extends Migration
      */
     public function down()
     {
-        Schema::table('user_verification', function (Blueprint $table) {
-            //
+        Schema::table('user_verification', function (Blueprint $table)
+        {
+            Schema::drop('user_verification');
         });
     }
 }

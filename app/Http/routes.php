@@ -6,6 +6,12 @@ Route::get('/', [
     'as' 			=> 'index'
 ]);
 
+Route::get('email_confirmation/{token}', [
+	'middleware' 	=> 'guest',
+    'uses' 			=> 'PublicController@email_confirmation',
+    'as' 			=> 'confirm_mail'
+]);
+
 /*Route::group(['middleware' => ['web']], function ()
 {
     //
