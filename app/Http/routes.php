@@ -1,8 +1,9 @@
 <?php
 
 Route::get('/', [
-    'uses' => 'PublicController@index',
-    'as' => 'index'
+	'middleware' 	=> 'guest',
+    'uses' 			=> 'PublicController@index',
+    'as' 			=> 'index'
 ]);
 
 /*Route::group(['middleware' => ['web']], function ()

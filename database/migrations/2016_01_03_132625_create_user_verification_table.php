@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePasswordResetsTable extends Migration
+class CreateUserVerificationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,11 +12,11 @@ class CreatePasswordResetsTable extends Migration
      */
     public function up()
     {
-        Schema::create('password_resets', function (Blueprint $table) {
+        Schema::create('user_verification', function (Blueprint $table)
+        {
             $table->string('email')                 ->unique();
-            $table->string('token')  ->unique();
-            $table->timestamp('created_at');    //if current time is more than 3 days of reset request, then it is invalid also
-            $table->enum('is_valid', ['valid', 'invalid'])->default('valid');    //if email link is clicked, then it will become invalid
+            $table->string('verification_token')    ->unique();
+            $table->timestamps();
 
             //Foreign Keys
             $table->foreign('email')->references('email')->on('users')->onDelete('cascade');
@@ -30,6 +30,8 @@ class CreatePasswordResetsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('password_resets');
+        Schema::table('user_verification', function (Blueprint $table) {
+            //
+        });
     }
 }

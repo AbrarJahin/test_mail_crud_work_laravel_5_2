@@ -27,6 +27,30 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
 
 
+### Server Config
+
+Change in php.ini file-
+
+'
+zend_extension = "c:/wamp/bin/php/php5.5.12/zend_ext/php_xdebug-2.2.5-5.5-vc11-x86_64.dll"
+
+;xdebug
+
+xdebug.remote_enable = off
+
+xdebug.profiler_enable = off
+
+xdebug.profiler_enable_trigger = off
+
+xdebug.profiler_output_name = cachegrind.out.%t.%p
+
+xdebug.profiler_output_dir = "c:/wamp/tmp"
+
+xdebug.show_local_vars=0
+
+xdebug.max_nesting_level = 200
+'
+
 =============================================================================
 
 
