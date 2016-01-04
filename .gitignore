@@ -3,7 +3,6 @@ Homestead.json
 .env
 
 /bootstrap/compiled.php
-/vendor
 
 /build/logs
 /build/coverage
