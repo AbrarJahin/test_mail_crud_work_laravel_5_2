@@ -11,6 +11,7 @@ class UserVerification extends Model
 						        'email',
 						        'verification_token'
 						    ];
-	//$timestamps = false;
+	//$timestamps = false;		//Disabling timestamps
 	protected $primaryKey = 'verification_token';
+	public $incrementing = false;	//for using non integer as a PK
 }
