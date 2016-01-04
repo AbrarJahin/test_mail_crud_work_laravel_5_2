@@ -43,6 +43,11 @@ Route::group(['middleware' => ['web','admin']], function ()
         'as'            => 'users'
     ]);
 
+    Route::post('users_list', [
+        'uses'          => 'AdminController@users_list',
+        'as'            => 'users_list'
+    ]);
+
     //Edit,activate,suspend, delete
     Route::get('articles', [
         'uses'          => 'AdminController@articles',

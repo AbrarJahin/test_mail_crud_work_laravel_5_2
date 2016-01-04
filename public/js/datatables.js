@@ -5,7 +5,7 @@ $(document).ready(function() {
 		"serverSide": true,
 		"ajax":
 		{
-			url :"employee-grid-data.php", // json datasource
+			url :"users_list", // json datasource
 			type: "post",  // method  , by default get
 			error: function()
 			{  // error handling
@@ -18,7 +18,7 @@ $(document).ready(function() {
 						{	"data": "employee_name"			},
 						{	"data": "employee_salary"		},
 						{	"data": "employee_age"			},
-						{	"data": null					},		//If it is not null then buttons would not be shown
+						{	"data": null					},		//If it is not null then shorting buttons would not be shown
 						{	"data": null					}
 					],
 		//"pagingType": "full_numbers",	//Adding Last and First in Pagination
