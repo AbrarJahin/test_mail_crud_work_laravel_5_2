@@ -52,8 +52,8 @@ class UserController extends Controller
                         'article.content',
                         'article.status',
                         'article.created_at'
-                        //DB::raw('IF(enabled=1,"Active","Inactive")AS status'
-                    );
+                    )
+            ->where('article.status', '=', 'active');
         $totalData = $baseQuery->count();
         //Applying Filters
         ////Search Filtering
@@ -154,5 +154,50 @@ class UserController extends Controller
         $flight->status     = "inactive";
         $flight->save();
         return Redirect::back()->withErrors(['Article Successfully Added']);
+    }
+
+    public function delete_article()
+    {
+        $requestData = Request::all();;
+        try
+        {
+            $article = Article::findOrFail($requestData['id']);
+            $article->delete();
+            return "Article deleted successfully";
+        }
+        catch(ModelNotFoundException $e)
+        {
+            return "Article not found";
+        }
+    }
+
+    public function get_articles()
+    {
+        $requestData = Request::all();
+        try
+        {
+            return Article::findOrFail($requestData['id']);
+        }
+        catch(ModelNotFoundException $e)
+        {
+            return "Article not found";
+        }
+    }
+
+    public function edit_articles()
+    {
+        $requestData = Request::all();
+        try
+        {
+            $article = Article::findOrFail($requestData['id']);
+            $article->title     = $requestData['title'];
+            $article->content   = $requestData['content'];
+            $article->save();
+            return Redirect::back()->withErrors(['Article Successfully Updated']);
+        }
+        catch(ModelNotFoundException $e)
+        {
+            return Redirect::back()->withErrors(['Article not found']);
+        }
     }
 }

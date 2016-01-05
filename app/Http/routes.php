@@ -1,17 +1,5 @@
 <?php
 
-/*Route::get('/', [
-	'middleware' 	=> 'guest',
-    'uses' 			=> 'PublicController@index',
-    'as' 			=> 'index'
-]);
-
-Route::get('email_confirmation/{token}', [
-	'middleware' 	=> 'guest',
-    'uses' 			=> 'PublicController@email_confirmation',
-    'as' 			=> 'confirm_mail'
-]);*/
-
 //Public poutes
 Route::group(['middleware' => 'guest'], function ()
 {
@@ -67,9 +55,28 @@ Route::group(['middleware' => ['web','admin']], function ()
         'uses'          => 'AdminController@users_list_delete',
         'as'            => 'users_list_delete'
     ]);
+
+    //Articles list AJAX post for datatables
+    Route::post('articles_list', [
+        'uses'          => 'AdminController@articles_list',
+        'as'            => 'articles_list'
+    ]);
+    //Articles list AJAX - supporting
+    Route::put('articles_list/activate', [
+        'uses'          => 'AdminController@articles_list_activate',
+        'as'            => 'articles_list_activate'
+    ]);
+    Route::put('articles_list/suspend', [
+        'uses'          => 'AdminController@articles_list_suspend',
+        'as'            => 'articles_list_suspend'
+    ]);
+    Route::delete('articles_list/delete', [
+        'uses'          => 'AdminController@articles_list_delete',
+        'as'            => 'articles_list_delete'
+    ]);
 });
 
-//Admin Routes
+//User Routes
 Route::group(['middleware' => ['web','user']], function ()
 {
     //My Articles - Add, edit, delete
@@ -96,5 +103,23 @@ Route::group(['middleware' => ['web','user']], function ()
     Route::post('add_articles', [
         'uses'          => 'UserController@add_articles',
         'as'            => 'add_articles'
+    ]);
+
+    //Edit Aticles
+    Route::post('my_articles_list/get', [
+        'uses'          => 'UserController@get_articles',
+        'as'            => 'get_articles'
+    ]);
+
+    //Edit Aticles
+    Route::post('my_articles_list/edit', [
+        'uses'          => 'UserController@edit_articles',
+        'as'            => 'edit_articles'
+    ]);
+
+    //Delete Aticles
+    Route::delete('my_articles_list/delete', [
+        'uses'          => 'UserController@delete_article',
+        'as'            => 'delete_article'
     ]);
 });
