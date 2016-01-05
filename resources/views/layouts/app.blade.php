@@ -53,7 +53,8 @@
                             <li><a href="{{ url('/users') }}">Users</a></li>
                             <li><a href="{{ url('/articles') }}">Articles</a></li>
                         @else
-                            <li><a href="{{ url('/home') }}">Add menu for normal user</a></li>
+                            <li><a href="{{ url('/my_articles') }}">My Articles</a></li>
+                            <li><a href="{{ url('/all_articles') }}">All Articles</a></li>
                         @endif
                     @endif
                 </ul>

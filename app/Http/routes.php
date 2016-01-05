@@ -72,10 +72,29 @@ Route::group(['middleware' => ['web','admin']], function ()
 //Admin Routes
 Route::group(['middleware' => ['web','user']], function ()
 {
-/*
-    //Edit,activate,suspend, delete
-    Route::get('articles', [
-        'uses'          => 'AdminController@articles',
-        'as'            => 'articles'
-    ]);*/
+    //My Articles - Add, edit, delete
+    Route::get('my_articles', [
+        'uses'          => 'UserController@my_articles',
+        'as'            => 'my_articles'
+    ]);
+
+    Route::get('all_articles', [
+        'uses'          => 'UserController@all_articles',
+        'as'            => 'all_articles'
+    ]);
+    //All Articles list AJAX post for datatables
+    Route::post('all_articles_list', [
+        'uses'          => 'UserController@all_articles_public_list',
+        'as'            => 'all_articles_list'
+    ]);
+    //All Articles list AJAX post for datatables
+    Route::post('my_articles_list', [
+        'uses'          => 'UserController@my_articles_public_list',
+        'as'            => 'my_articles_list'
+    ]);
+    //Add Aticles
+    Route::post('add_articles', [
+        'uses'          => 'UserController@add_articles',
+        'as'            => 'add_articles'
+    ]);
 });
