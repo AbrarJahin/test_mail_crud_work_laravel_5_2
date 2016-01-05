@@ -43,15 +43,29 @@ Route::group(['middleware' => ['web','admin']], function ()
         'as'            => 'users'
     ]);
 
-    Route::post('users_list', [
-        'uses'          => 'AdminController@users_list',
-        'as'            => 'users_list'
-    ]);
-
     //Edit,activate,suspend, delete
     Route::get('articles', [
         'uses'          => 'AdminController@articles',
         'as'            => 'articles'
+    ]);
+
+    //Users list AJAX post for datatables
+    Route::post('users_list', [
+        'uses'          => 'AdminController@users_list',
+        'as'            => 'users_list'
+    ]);
+    //Users list AJAX - supporting
+    Route::put('users_list/activate', [
+        'uses'          => 'AdminController@users_list_activate',
+        'as'            => 'users_list_activate'
+    ]);
+    Route::put('users_list/suspend', [
+        'uses'          => 'AdminController@users_list_suspend',
+        'as'            => 'users_list_suspend'
+    ]);
+    Route::delete('users_list/delete', [
+        'uses'          => 'AdminController@users_list_delete',
+        'as'            => 'users_list_delete'
     ]);
 });
 

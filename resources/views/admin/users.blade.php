@@ -12,14 +12,17 @@
                     <table id="employee-grid"  cellpadding="0" cellspacing="0" border="0" class="display" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Employee name</th>
-                                    <th>Salary</th>
-                                    <th>Age</th>
-                                    <th style="width: 1px;"><input type="checkbox" name="select_all" id="select_all"></th>
+                                    <th>User Name</th>
+                                    <th>Email</th>
+                                    <th>UserType</th>
+                                    <th>Status</th>
+                                    <th>Signed Up Time</th>
                                     <th  style="width: 70px;">Action</th>
                                 </tr>
                             </thead>
                     </table>
+                    <meta name="csrf-token" content="{{ csrf_token() }}">
+                    <meta name="terget_ajax_url" content="{{ route('users_list') }}">
 
                 </div>
             </div>
