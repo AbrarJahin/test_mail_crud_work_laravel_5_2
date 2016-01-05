@@ -7,6 +7,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Article;
+use App\Balance;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Redirect;
 use Auth;
@@ -199,5 +200,23 @@ class UserController extends Controller
         {
             return Redirect::back()->withErrors(['Article not found']);
         }
+    }
+
+    public function show_balance()
+    {
+        return view('user.balance')
+            ->with('balance',Balance::where('user_id', Auth::user()->id)->sum('money_amount'))
+            ->with('transections',Balance::where('user_id', Auth::user()->id)->orderBy('created_at')->get());
+    }
+
+    public function add_balance()
+    {
+        $requestData = Request::all();
+        $balance = new Balance;
+        $balance->user_id           = Auth::user()->id;
+        $balance->money_amount      = $requestData['balance'];
+        $balance->transection_by    = 'user';
+        $balance->save();
+        return Redirect::back()->withErrors(['Balance Successfully Added']);
     }
 }

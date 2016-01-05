@@ -55,6 +55,7 @@
                         @else
                             <li><a href="{{ url('/my_articles') }}">My Articles</a></li>
                             <li><a href="{{ url('/all_articles') }}">All Articles</a></li>
+                            <li><a href="{{ url('/balance') }}">Balance And Payments</a></li>
                         @endif
                     @endif
                 </ul>

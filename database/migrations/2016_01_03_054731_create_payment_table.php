@@ -15,7 +15,8 @@ class CreatePaymentTable extends Migration
         Schema::create('payments', function (Blueprint $table)
         {
             $table->integer('user_id')                                  ->unsigned()  ->index();
-            $table->enum('status', ['debit', 'credit']) ->default('debit'); //debit = +, credit = -
+            //$table->enum('status', ['debit', 'credit']) ->default('debit'); //debit = +, credit = -
+            $table->bigInteger('money_amount'); //no neeed to debit credit, only add positive and neg number
             $table->enum('transection_by', ['user', 'admin', 'system']) ->default('system'); //System = auto redused by corn job
             $table->timestamps();
 

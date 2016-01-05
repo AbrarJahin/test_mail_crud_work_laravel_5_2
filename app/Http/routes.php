@@ -122,4 +122,14 @@ Route::group(['middleware' => ['web','user']], function ()
         'uses'          => 'UserController@delete_article',
         'as'            => 'delete_article'
     ]);
+
+    Route::get('balance', [
+        'uses'          => 'UserController@show_balance',
+        'as'            => 'show_balance'
+    ]);
+
+    Route::post('balance', [
+        'uses'          => 'UserController@add_balance',
+        'as'            => 'add_balance'
+    ]);
 });
