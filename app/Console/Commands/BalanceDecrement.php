@@ -38,7 +38,7 @@ class BalanceDecrement extends Command
      * @return mixed
      */
     public function handle()
-    {
+    {//Scheduler work - which is set up by every 30 min in Kernel.php
         //Decreament balance of every user by 10 unit
         $users_having_money = DB::table('users')
                 ->join('payments', 'users.id', '=', 'payments.user_id')

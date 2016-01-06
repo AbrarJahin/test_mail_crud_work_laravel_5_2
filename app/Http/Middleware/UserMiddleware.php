@@ -8,7 +8,7 @@ use Auth;
 class UserMiddleware
 {
     /**
-     * Handle an incoming request.
+     * Handle an incoming request for users routes
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

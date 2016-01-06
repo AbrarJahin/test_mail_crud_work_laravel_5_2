@@ -14,17 +14,17 @@ use Auth;
 
 class UserController extends Controller
 {
-    public function my_articles()
+    public function my_articles()       //Showing My Articles
     {
         return view('user.my_articles');
     }
 
-    public function all_articles()
+    public function all_articles()      //Showing All Articles
     {
         return view('user.all_articles');
     }
 
-    public function all_articles_public_list()
+    public function all_articles_public_list()  //Datatable for public activated articles
     {
         $requestData = Request::all();
 
@@ -84,7 +84,7 @@ class UserController extends Controller
         return $json_data;
     }
 
-    public function my_articles_public_list()
+    public function my_articles_public_list()   //Datatable for my all articles
     {
         $requestData = Request::all();
 
@@ -145,7 +145,7 @@ class UserController extends Controller
         return $json_data;
     }
 
-    public function add_articles()
+    public function add_articles()              //Ading an article
     {
         $requestData = Request::all();
         $flight = new Article;
@@ -157,7 +157,7 @@ class UserController extends Controller
         return Redirect::back()->withErrors(['Article Successfully Added']);
     }
 
-    public function delete_article()
+    public function delete_article()            //Deleting an article
     {
         $requestData = Request::all();;
         try
@@ -172,7 +172,7 @@ class UserController extends Controller
         }
     }
 
-    public function get_articles()
+    public function get_articles()              //Get an article for editing
     {
         $requestData = Request::all();
         try
@@ -185,7 +185,7 @@ class UserController extends Controller
         }
     }
 
-    public function edit_articles()
+    public function edit_articles()             //Updating edited Article
     {
         $requestData = Request::all();
         try
@@ -202,14 +202,14 @@ class UserController extends Controller
         }
     }
 
-    public function show_balance()
+    public function show_balance()              //Balance Showing
     {
         return view('user.balance')
             ->with('balance',Balance::where('user_id', Auth::user()->id)->sum('money_amount'))
             ->with('transections',Balance::where('user_id', Auth::user()->id)->orderBy('created_at')->get());
     }
 
-    public function add_balance()
+    public function add_balance()               //Adding Balance
     {
         $requestData = Request::all();
         $balance = new Balance;

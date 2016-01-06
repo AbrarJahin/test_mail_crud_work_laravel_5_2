@@ -12,7 +12,7 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct()       //Laravel 5.2 default auth work
     {
         $this->middleware('auth');
     }
@@ -22,7 +22,7 @@ class HomeController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index() //Home page's view
     {
         return view('home');
     }

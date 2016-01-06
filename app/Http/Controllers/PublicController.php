@@ -19,12 +19,12 @@ class PublicController extends Controller
      *
      * @return Response
      */
-    public function index()
+    public function index() //Index page
     {
         return view('welcome');
     }
 
-    public function email_confirmation($token)
+    public function email_confirmation($token)  //Confirm email verification
     {
         //find verification info
         $user_verification  = UserVerification::where('verification_token', $token);

@@ -30,6 +30,10 @@ class AdminController extends Controller
     //AJAX route for showing user list
     public function users_list()
     {
+        //This type of complex query is provided so that u can check my query skill
+        //This complex query is essential for Datatables because everything in the datatables is done by this single query
+        //Show, ordering, searching, limiting, pagination, count total no of elements
+        //Details for all datatables complex query is almost same, so, in another place comments are not provided
         $requestData = Request::all();
 
         $columns = array(
@@ -86,7 +90,7 @@ class AdminController extends Controller
         return $json_data;
     }
 
-    public function users_list_activate()
+    public function users_list_activate()       //Activate User
     {
         $requestData = Request::all();
 
@@ -103,7 +107,7 @@ class AdminController extends Controller
         }
     }
 
-    public function users_list_suspend()
+    public function users_list_suspend()    //Suspend User
     {
         $requestData = Request::all();
 
@@ -120,7 +124,7 @@ class AdminController extends Controller
         }
     }
 
-    public function users_list_delete()
+    public function users_list_delete()     //Delete User
     {
         $requestData = Request::all();
 
@@ -197,7 +201,7 @@ class AdminController extends Controller
         return $json_data;
     }
 
-    public function articles_list_activate()
+    public function articles_list_activate()        //Activate Article
     {
         $requestData = Request::all();
 
@@ -214,7 +218,7 @@ class AdminController extends Controller
         }
     }
 
-    public function articles_list_suspend()
+    public function articles_list_suspend()        //Suspend Article
     {
         $requestData = Request::all();
 
@@ -231,7 +235,7 @@ class AdminController extends Controller
         }
     }
 
-    public function articles_list_delete()
+    public function articles_list_delete()        //Delete Article
     {
         $requestData = Request::all();
 
