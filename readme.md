@@ -1,4 +1,4 @@
-## Laravel 5.2 test RUD work with Email Confirmation and Corn Job
+## Laravel 5.2 test CRUD work with Email Confirmation and Corn Job
 
 ### Server Config
 
